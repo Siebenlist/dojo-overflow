@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Questions List</title>
+</head>
+<body>
+<h1>Questions List</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Question</th>
+        <th>Tags</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="question : ${questions}">
+        <td><a th:href="@{/questions/{id}(id=${question.id})}" th:text="${question.questionText}"></a></td>
+        <td>
+            <span th:each="tag : ${question.getTags()}" th:text="${tag.subjectText}"></span>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/questions/new">Ask a New Question</a>
+</body>
+</html>
